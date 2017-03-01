@@ -1,0 +1,128 @@
+﻿@model WebBack.Models.Biz.CarInsureCommissionRate.ApplyViewModel
+@{
+    ViewBag.Title = "Apply";
+    Layout = "~/Views/Shared/_LayoutHomeDialog.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+        <!--
+        $(this).ready(function () {
+
+
+            $.formValidator.initConfig({ formID: "form1", onError: function (msg) { art.dialog.tips(msg); } });
+
+            $("#Model_CommissionRate_Id").formValidator({ onShow: "", onFocus: "", onCorrect: "" }).inputValidator({ min: 1, max: 500, onError: "请选择对象" });
+            $("#Model_CommissionRate_Compulsory").formValidator({ onShow: "", onFocus: "", onCorrect: "" }).inputValidator({ type: "number", min: 0.01, max: 10, onError: "交强险比例范围在0.01~10.00之间" });
+            $("#Model_CommissionRate_Commercial").formValidator({ onShow: "", onFocus: "", onCorrect: "" }).inputValidator({ type: "number", min: 0.01, max: 10, onError: "商业险比例范围在0.01~10.00之间" });
+            $("#Model_Reason").formValidator({ onShow: "", onFocus: "", onCorrect: "" }).inputValidator({ min: 1, max: 500, onError: "原因不能为空,不超过500个字符" });
+
+            $("#Model_CommissionRate_Commercial").decimalInput(2);
+            $("#Model_CommissionRate_Compulsory").decimalInput(2);
+
+            $("#Model_CommissionRate_Id").change(function () {
+                var commercial = $(this).find('option:checked').attr("commercial");
+                var compulsory = $(this).find('option:checked').attr("compulsory");
+                $("#lbl_CommissionRate_Commercial").text(commercial);
+                $("#lbl_CommissionRate_Compulsory").text(compulsory);
+            });
+
+        });
+
+        function submit(fun) {
+            var isValid = $.formValidator.pageIsValid();
+            if (!isValid)
+                return false;
+
+             art.dialog.confirm(
+    '确定要申请？',
+    function () {
+        var l_Data = $("#form1").serializeArray();
+
+        $.lumos.postJson({
+            url: "../CarInsureCommissionRate/Apply",
+            data: l_Data,
+            success: function (d) {
+
+                 fun(d);
+            }
+        });
+    });
+                return false;
+
+        }
+        //-->
+    </script>
+}
+
+
+<form name="form1" id="form1">
+    @Html.AntiForgeryToken()
+    <div class="gbr-row-title clearfix">
+        <div class="pull-left">
+            <h5>基本信息</h5>
+        </div>
+        <div class="pull-right f-tb1-item-pull-right">
+            <h6></h6>
+        </div>
+    </div>
+    <table class="f-tb" cellpadding="0" cellspacing="1">
+        <tr>
+            <td class="f-tb-t" style="width:50px;">
+                对象：&nbsp;
+            </td>
+            <td class="f-tb-c">
+                <select id="Model_CommissionRate_Id" name="Model.CommissionRate.Id" " class="select-control">
+                    <option value="" commercial="0.00" compulsory="0.00">请选择</option>
+                    @foreach (var m in Model.CommissionObject)
+                    {
+                        <option value="@m.Id" commercial="@m.Commercial" compulsory="@m.Compulsory">@m.ReferenceName</option>
+                    }
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td class="f-tb-t">
+
+                交强险比例（调整前） ：
+
+            </td>
+            <td class="f-tb-c"><span id="lbl_CommissionRate_Compulsory"></span><span>%</span> </td>
+        </tr>
+        <tr>
+            <td class="f-tb-t">
+                交强险比例（调整后） ：
+            </td>
+            <td class="f-tb-c">
+                <input name="Model.CommissionRate.Compulsory" type="text" id="Model_CommissionRate_Compulsory" value="" class="input-control" style="width:50px;" /><span>%</span> 
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="f-tb-t">
+                商业险比例（调整前） ：
+            </td>
+            <td class="f-tb-c"><span id="lbl_CommissionRate_Commercial"></span><span>%</span> </td>
+        </tr>
+        <tr>
+            <td class="f-tb-t">
+                商业险比例（调整后） ：
+            </td>
+            <td class="f-tb-c">
+                <input name="Model.CommissionRate.Commercial" type="text" id="Model_CommissionRate_Commercial" value="" class="input-control" style="width:50px;" /><span>%</span>
+            </td>
+        </tr>
+
+
+        <tr>
+            <td class="f-tb-t">
+                原因：
+            </td>
+            <td class="f-tb-c" style="white-space:normal;">
+                <textarea name="Model.Reason" rows="5" cols="42" id="Model_Reason" class="input-control"></textarea>
+            </td>
+        </tr>
+    </table>
+</form>
+

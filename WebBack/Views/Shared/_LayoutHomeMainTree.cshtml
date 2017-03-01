@@ -1,0 +1,19 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutHomeMain.cshtml";
+}
+
+@section styles{
+    @RenderSection("styles", required: false)
+}
+@section scripts{
+    @WebBackStaticScriptsResource.Render("jquery.formValidator.js")
+    @WebBackStaticScriptsResource.Render("jquery.formValidatorRegex.js")
+    @WebBackStaticScriptsResource.Render("Jquery.tree/jquery.ztree.core-3.2.js")
+    @WebBackStaticScriptsResource.Render("Jquery.tree/jquery.ztree.excheck-3.2.js")
+    @RenderSection("scripts", required: false)
+}
+
+@RenderBody()
+@section scriptsbyend{
+    @RenderSection("scriptsbyend", required: false)
+}

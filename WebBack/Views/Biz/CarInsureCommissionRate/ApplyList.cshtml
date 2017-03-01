@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "ApplyList";
+    Layout = "~/Views/Shared/_LayoutHomeMainList.cshtml";
+}
+
+@section scripts{
+    <script type="text/javascript">
+
+        var listTable;
+
+        $(document).ready(function () {
+            listTable = $("#list_table").loadDataTable({
+                url: "../CarInsureCommissionRate/GetApplyList",
+                pageIndex: 0,
+                searchParams: $("#form1").serializeArray(),
+                searchButtonId: "btn_Search",
+                containerId: "form1",
+                rowDataCombie: function (p_index, p_row) {
+
+                    var l_StrRows = "";
+                    l_StrRows += "<tr>";
+                    l_StrRows += "<td class=\"no\" >" + (p_index + 1) + "</td>";
+                    l_StrRows += "<td class=\"overflow\" title=\"" + p_row.referenceName + "\">" + p_row.referenceName + "</td>";
+                    l_StrRows += "<td class=\"overflow\" title=\"" + p_row.afterCompulsory + "\">" + p_row.beforeCompulsory + "%(调整为：" + p_row.afterCompulsory + "%)</td>";
+                    l_StrRows += "<td class=\"overflow\" title=\"" + p_row.afterCommercial + "\">" + p_row.beforeCommercial + "%(调整为：" + p_row.afterCommercial + "%)</td>";
+                    l_StrRows += "<td class=\"overflow\" title=\"" + p_row.status + "\">" + p_row.status + "</td>";
+                    l_StrRows += "<td class=\"overflow\" title=\"" + p_row.createTime + "\">" + p_row.createTime + "</td>";
+                    l_StrRows += "</tr>";
+                    return l_StrRows;
+                }
+            });
+
+
+
+            $(".btn-apply").live('click', function () {
+
+                var url = '../CarInsureCommissionRate/Apply';
+                var title = '申请';
+                var dialog = art.dialog.open(url, {
+                    id: "openDialog", title: title, width: '600px', height: '420px', lock: true, drag: false, cancelVal: '关闭', cancel: true, okVal: '确定', ok: function () {
+
+                        this.iframe.contentWindow.submit(function (d) {
+                            if (d.result == resultType.success) {
+                                listTable.loadData();
+                                dialog.close();
+                            }
+                            $.lumos.tips(d.message);
+                        });
+
+                        return false;
+                    }
+                });
+
+
+            });
+
+
+        });
+
+    </script>
+}
+
+<form id="form1" name="form1">
+    @Html.AntiForgeryToken()
+
+    <div class="search-bar">
+        <div class="filter">
+            <span class="filter-label">名称：</span>
+            <span class="filter-input">
+                <input type="text" class="input-control" name="Name" style="width:120px;" />
+            </span>
+        </div>
+        <div class="filter"><input type="button" class="btn btn-search" id="btn_Search" value="查询" /> </div>
+
+        <div class="filter" style="float:right">
+            <input type="button" class="btn btn-sure btn-apply" applytype="1" value="申请" style="margin-left:0px;margin-right:0px;" />
+        </div>
+    </div>
+    <div class="list">
+        <table id="list_table" class="list-tb" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th style="width:5%" class="no">
+                        序号
+                    </th>
+                    <th style="width:20%">
+                        名称
+                    </th>
+                    <th style="width:20%">
+                        交强险比例
+                    </th>
+                    <th style="width:20%">
+                        商业险比例
+                    </th>
+                    <th style="width:20%">
+                        状态
+                    </th>
+                    <th style="width:15%">
+                        申请时间
+                    </th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">
+                        <div class="pull-left">
+
+                        </div>
+                        <div class="pull-right pagination">
+                            <div class="pagination-info">
+
+                            </div>
+                            <div class="pagination-index">
+
+                            </div>
+                            <div class="pagination-goto">
+
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</form>
+

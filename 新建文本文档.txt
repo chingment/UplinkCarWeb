@@ -1,0 +1,42 @@
+<CertificateIdentificationSystemResponse>
+    <ResponseHead>
+        <responseCode>0</responseCode>
+        <requestType>01</requestType>
+        <errorCode></errorCode>
+        <errorMessage></errorMessage>
+        <esbCode>00</esbCode>
+        <esbMessage>成功</esbMessage>
+        <signData></signData>
+    </ResponseHead>
+    <CertificateIdentificationSystemResponseMain>
+        <!-- 证件信息  -->
+        <LicenceInfoVO>
+            <!-- 识别类型 -->
+            <type>drivingLicence</type>
+            <!-- 错误信息 -->
+            <errorMessage></errorMessage>
+            <DrivingLicenceVO>
+                <!-- 所有人 -->
+                <owner>钟三普</owner>
+                <!-- 驾驶证号牌号码 -->
+                <plateNum>粤RDJ725</plateNum>
+                <!-- 住址 -->
+                <address>广东省英德市九龙镇九龙居委会下岩二组2S号</address>
+                <!-- 驾驶证使用性质 -->
+                <userCharacter>非营运</userCharacter>
+                <!-- 驾驶证品牌型号 -->
+                <model>北京现代牌BH7161HAY</model>
+                <!-- 驾驶证车辆识别代号 -->
+                <vin>LBEMDAFB1CZ072908</vin>
+                <!-- 驾驶证发动机号码 -->
+                <engineNo>CB807399</engineNo>
+                <!-- 驾驶证注册日期 -->
+                <registerDate></registerDate>
+                <!-- 驾驶证发证日期 -->
+                <issueDate></issueDate>
+                <!-- 车辆型号 -->
+                <vehicleType>小型轿车</vehicleType>
+            </DrivingLicenceVO>
+        </LicenceInfoVO>
+    </CertificateIdentificationSystemResponseMain>
+</CertificateIdentificationSystemResponse>

@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    @RenderSection("styles", required: false)
+}
+@section scripts{
+    @WebBackStaticScriptsResource.Render("jquery.formValidator.js")
+    @WebBackStaticScriptsResource.Render("jquery.formValidatorRegex.js")
+    @WebBackStaticScriptsResource.Render("Jquery.tree/jquery.ztree.core-3.2.js")
+    @WebBackStaticScriptsResource.Render("Jquery.tree/jquery.ztree.excheck-3.2.js")
+    @RenderSection("scripts", required: false)
+}
+<div class="gbr gbr-dialog">
+    @RenderBody()
+</div>
+@section scriptsbyend{
+    @RenderSection("scriptsbyend", required: false)
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+
+        });
+    </script>
+}
+
+

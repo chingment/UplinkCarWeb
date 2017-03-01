@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = null;
+    string strUrl = System.Configuration.ConfigurationManager.AppSettings["custom:AppStaticResourceServerUrl"];
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link href="@(strUrl)/css/amazeui.min.css" rel="stylesheet" type="text/css" />
+    <link href="@(strUrl)/css/style.css" rel="stylesheet" type="text/css" />
+    @RenderSection("styles", required: false)
+    <script src="@(strUrl)/js/jquery-1.10.2.min.js"></script>
+    @RenderSection("scripts", required: false)
+    <style>
+        .am-slider-default .am-control-nav {
+            text-align: center;
+        }
+
+        .am-slider-default .am-control-nav li a.am-active {
+            background: #fdb325;
+        }
+
+        .am-slider-default .am-control-nav li a {
+            border: 0;
+            width: 10px;
+            height: 10px;
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+
+    @RenderSection("scriptsbyend", required: false)
+    <script src="@(strUrl)/js/jquery.min.js"></script>
+    <script src="@(strUrl)/js/amazeui.min.js"></script>
+</body>
+</html>
+
+

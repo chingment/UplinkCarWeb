@@ -1,0 +1,13 @@
+﻿@model WebBack.Models.App.Banner.DetailsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+}
+
+<div class="news">
+    <h3>@Model.SysBanner.Title</h3>
+    <p>日期：@Model.SysBanner.CreateTime.ToUnifiedFormatDateTime()</p>
+</div>
+<div class="news-con">
+    @Html.Raw(Model.SysBanner.Content)
+</div>

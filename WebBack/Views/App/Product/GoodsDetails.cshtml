@@ -1,0 +1,59 @@
+﻿@model WebBack.Models.App.Product.GoodsDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AppLayout.cshtml";
+
+}
+
+<!--图片轮换-->
+<div class="am-slider am-slider-default" data-am-flexslider id="demo-slider-0">
+    <ul class="am-slides">
+
+        @foreach (var elseImg in Model.ElseImgs)
+        {
+            if (!string.IsNullOrEmpty(elseImg))
+            {
+
+                <li><img src="@elseImg" /></li>
+            }
+        }
+
+    </ul>
+</div>
+<div class="detal-info">
+    <p>@Model.Product.Name</p>
+    <h2>商城价：<span>￥@Model.Product.Price.ToPrice()</span></h2>
+</div>
+<div style="background: #eee; height: 10px;"></div>
+<div class="am-tabs detail-list" data-am-tabs>
+    <ul class="am-tabs-nav am-nav am-nav-tabs">
+        <li class="am-active"><a href="#tab1">商品详情</a></li>
+    </ul>
+
+    <div class="am-tabs-bd">
+        <div class="am-tab-panel am-fade am-in am-active detail " id="tab1">
+            @Html.Raw(Model.Product.Details)
+        </div>
+    </div>
+</div>
+<script>
+    //购物数量加减
+    $(function () {
+        $('.increase').click(function () {
+            var self = $(this);
+            var current_num = parseInt(self.siblings('input').val());
+            current_num += 1;
+            self.siblings('input').val(current_num);
+            update_item(self.siblings('input').data('item-id'));
+        })
+        $('.decrease').click(function () {
+            var self = $(this);
+            var current_num = parseInt(self.siblings('input').val());
+            if (current_num > 1) {
+                current_num -= 1;
+                self.siblings('input').val(current_num);
+                update_item(self.siblings('input').data('item-id'));
+            }
+        })
+    })
+</script>

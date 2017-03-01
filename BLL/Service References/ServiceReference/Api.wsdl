@@ -1,0 +1,1072 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://tempuri.org/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Sms_Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Timer" type="s:string" />
+            <s:element name="LongSms" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileList" type="tns:ArrayOfMobileList" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfMobileList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="MobileListGroup" nillable="true" type="tns:MobileListGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MobileListGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MsgID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Sms_SendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsIDList" type="tns:ArrayOfSmsIDList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSmsIDList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="SmsIDGroup" nillable="true" type="tns:SmsIDGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SmsIDGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element name="SmsID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Sms_GetRecv">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sms_GetRecvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsRecvList" type="tns:ArrayOfSmsRecvList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSmsRecvList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="SmsRecvGroup" nillable="true" type="tns:SmsRecvGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SmsRecvGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecvNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AddNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecvTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Sms_GetReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sms_GetReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="SmsReportList" type="tns:ArrayOfSmsReportList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSmsReportList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="SmsReportGroup" nillable="true" type="tns:SmsReportGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SmsReportGroup">
+        <s:sequence>
+          <s:element name="SmsID" type="s:long" />
+          <s:element name="Status" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Sms_GetSign">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sms_GetSignResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Sign" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sms_GetBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Sms_GetBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Balance" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_UpFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element name="SmilType" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="MmsFileList" type="tns:ArrayOfMmsFileGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMmsFileGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="20" name="MmsFileGroup" nillable="true" type="tns:MmsFileGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MmsFileGroup">
+        <s:sequence>
+          <s:element name="PlayTime" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image_FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Image_FileData" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text_FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Text_Content" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Audio_FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Audio_FileData" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Mms_UpFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="MmsFileID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_GetFileStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="MmsFileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_GetFileStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Title" type="s:string" />
+            <s:element name="Size" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="CreateTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_Send">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Timer" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileList" type="tns:ArrayOfMobileList" />
+            <s:element name="MmsFileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_SendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MmsIDList" type="tns:ArrayOfMmsIDList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMmsIDList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="MmsIDGroup" nillable="true" type="tns:MmsIDGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MmsIDGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+          <s:element name="MmsID" type="s:long" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Mms_GetReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_GetReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MmsReportList" type="tns:ArrayOfMmsReportList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMmsReportList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="MmsReportGroup" nillable="true" type="tns:MmsReportGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MmsReportGroup">
+        <s:sequence>
+          <s:element name="MmsID" type="s:long" />
+          <s:element name="Status" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReportTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExStatus" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Mms_GetRecv">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Mms_GetRecvResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Count" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Mobile" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecvNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="AddNum" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RecvTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MmsRecvFileList" type="tns:ArrayOfMmsRecvFileGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMmsRecvFileGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="200" name="MmsRecvFileGroup" nillable="true" type="tns:MmsRecvFileGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MmsRecvFileGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileLocation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Task_UpFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+            <s:element name="AutoDelete" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:base64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_UpFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="TaskFileID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_DelFile">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskFileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_DelFileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_SmsSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:string" />
+            <s:element name="LongSms" type="s:long" />
+            <s:element name="Priority" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="AtTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileList" type="tns:ArrayOfMobileFileGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfMobileFileGroup">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="20" name="MobileFileGroup" nillable="true" type="tns:MobileFileGroup" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="MobileFileGroup">
+        <s:sequence>
+          <s:element name="TaskFileType" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="TaskFileID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Task_SmsSendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="TaskSmsID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_GetSmsStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskSmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_GetSmsStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element name="MobileCount" type="s:long" />
+            <s:element name="YFMobileCount" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_SmsStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskSmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_SmsStopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_SmsStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskSmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_SmsStartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsSend">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="MmsFileID" type="s:long" />
+            <s:element name="Priority" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="AtTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="MobileList" type="tns:ArrayOfMobileFileGroup" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsSendResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="TaskMmsID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_GetMmsStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskMmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_GetMmsStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Status" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+            <s:element name="MobileCount" type="s:long" />
+            <s:element name="YFMobileCount" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="BeginTime" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EndTime" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsStop">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskMmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsStopResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsStart">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="TaskMmsID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Task_MmsStartResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="ErrCode" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_GetSmsBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="AgentID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_GetSmsBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Balance" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_GetCorpSmsBalance">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="AgentID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="CorpID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_GetCorpSmsBalanceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Balance" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_CorpSmsPay">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="AgentID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="LoginName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="TimeStamp" type="s:string" />
+            <s:element name="CorpID" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayMode" type="s:string" />
+            <s:element name="PayMoney" type="s:double" />
+            <s:element name="PayPrice" type="s:double" />
+            <s:element name="PayPresent" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="PayMemo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Agent_CorpSmsPayResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element name="Balance" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrMsg" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="Sms_SendSoapIn">
+    <wsdl:part name="parameters" element="tns:Sms_Send" />
+  </wsdl:message>
+  <wsdl:message name="Sms_SendSoapOut">
+    <wsdl:part name="parameters" element="tns:Sms_SendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetRecvSoapIn">
+    <wsdl:part name="parameters" element="tns:Sms_GetRecv" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetRecvSoapOut">
+    <wsdl:part name="parameters" element="tns:Sms_GetRecvResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Sms_GetReport" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetReportSoapOut">
+    <wsdl:part name="parameters" element="tns:Sms_GetReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetSignSoapIn">
+    <wsdl:part name="parameters" element="tns:Sms_GetSign" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetSignSoapOut">
+    <wsdl:part name="parameters" element="tns:Sms_GetSignResponse" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:Sms_GetBalance" />
+  </wsdl:message>
+  <wsdl:message name="Sms_GetBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:Sms_GetBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mms_UpFileSoapIn">
+    <wsdl:part name="parameters" element="tns:Mms_UpFile" />
+  </wsdl:message>
+  <wsdl:message name="Mms_UpFileSoapOut">
+    <wsdl:part name="parameters" element="tns:Mms_UpFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetFileStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:Mms_GetFileStatus" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetFileStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:Mms_GetFileStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mms_SendSoapIn">
+    <wsdl:part name="parameters" element="tns:Mms_Send" />
+  </wsdl:message>
+  <wsdl:message name="Mms_SendSoapOut">
+    <wsdl:part name="parameters" element="tns:Mms_SendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetReportSoapIn">
+    <wsdl:part name="parameters" element="tns:Mms_GetReport" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetReportSoapOut">
+    <wsdl:part name="parameters" element="tns:Mms_GetReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetRecvSoapIn">
+    <wsdl:part name="parameters" element="tns:Mms_GetRecv" />
+  </wsdl:message>
+  <wsdl:message name="Mms_GetRecvSoapOut">
+    <wsdl:part name="parameters" element="tns:Mms_GetRecvResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_UpFileSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_UpFile" />
+  </wsdl:message>
+  <wsdl:message name="Task_UpFileSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_UpFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_DelFileSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_DelFile" />
+  </wsdl:message>
+  <wsdl:message name="Task_DelFileSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_DelFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsSendSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_SmsSend" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsSendSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_SmsSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_GetSmsStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_GetSmsStatus" />
+  </wsdl:message>
+  <wsdl:message name="Task_GetSmsStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_GetSmsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsStopSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_SmsStop" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsStopSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_SmsStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsStartSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_SmsStart" />
+  </wsdl:message>
+  <wsdl:message name="Task_SmsStartSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_SmsStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsSendSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_MmsSend" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsSendSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_MmsSendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_GetMmsStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_GetMmsStatus" />
+  </wsdl:message>
+  <wsdl:message name="Task_GetMmsStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_GetMmsStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsStopSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_MmsStop" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsStopSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_MmsStopResponse" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsStartSoapIn">
+    <wsdl:part name="parameters" element="tns:Task_MmsStart" />
+  </wsdl:message>
+  <wsdl:message name="Task_MmsStartSoapOut">
+    <wsdl:part name="parameters" element="tns:Task_MmsStartResponse" />
+  </wsdl:message>
+  <wsdl:message name="Agent_GetSmsBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:Agent_GetSmsBalance" />
+  </wsdl:message>
+  <wsdl:message name="Agent_GetSmsBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:Agent_GetSmsBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Agent_GetCorpSmsBalanceSoapIn">
+    <wsdl:part name="parameters" element="tns:Agent_GetCorpSmsBalance" />
+  </wsdl:message>
+  <wsdl:message name="Agent_GetCorpSmsBalanceSoapOut">
+    <wsdl:part name="parameters" element="tns:Agent_GetCorpSmsBalanceResponse" />
+  </wsdl:message>
+  <wsdl:message name="Agent_CorpSmsPaySoapIn">
+    <wsdl:part name="parameters" element="tns:Agent_CorpSmsPay" />
+  </wsdl:message>
+  <wsdl:message name="Agent_CorpSmsPaySoapOut">
+    <wsdl:part name="parameters" element="tns:Agent_CorpSmsPayResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MobsetApiSoap">
+    <wsdl:operation name="Sms_Send">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">发送短信</documentation>
+      <wsdl:input message="tns:Sms_SendSoapIn" />
+      <wsdl:output message="tns:Sms_SendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetRecv">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取上行短信</documentation>
+      <wsdl:input message="tns:Sms_GetRecvSoapIn" />
+      <wsdl:output message="tns:Sms_GetRecvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetReport">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取短信状态报告</documentation>
+      <wsdl:input message="tns:Sms_GetReportSoapIn" />
+      <wsdl:output message="tns:Sms_GetReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetSign">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取短信签名</documentation>
+      <wsdl:input message="tns:Sms_GetSignSoapIn" />
+      <wsdl:output message="tns:Sms_GetSignSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetBalance">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取短信可用余额</documentation>
+      <wsdl:input message="tns:Sms_GetBalanceSoapIn" />
+      <wsdl:output message="tns:Sms_GetBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mms_UpFile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">上传彩信文件</documentation>
+      <wsdl:input message="tns:Mms_UpFileSoapIn" />
+      <wsdl:output message="tns:Mms_UpFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetFileStatus">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">查询彩信文件状态</documentation>
+      <wsdl:input message="tns:Mms_GetFileStatusSoapIn" />
+      <wsdl:output message="tns:Mms_GetFileStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mms_Send">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">发送彩信</documentation>
+      <wsdl:input message="tns:Mms_SendSoapIn" />
+      <wsdl:output message="tns:Mms_SendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetReport">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取彩信状态</documentation>
+      <wsdl:input message="tns:Mms_GetReportSoapIn" />
+      <wsdl:output message="tns:Mms_GetReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetRecv">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取彩信上行</documentation>
+      <wsdl:input message="tns:Mms_GetRecvSoapIn" />
+      <wsdl:output message="tns:Mms_GetRecvSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_UpFile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">上传号码文件</documentation>
+      <wsdl:input message="tns:Task_UpFileSoapIn" />
+      <wsdl:output message="tns:Task_UpFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_DelFile">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">删除号码文件</documentation>
+      <wsdl:input message="tns:Task_DelFileSoapIn" />
+      <wsdl:output message="tns:Task_DelFileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsSend">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">提交短信任务</documentation>
+      <wsdl:input message="tns:Task_SmsSendSoapIn" />
+      <wsdl:output message="tns:Task_SmsSendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_GetSmsStatus">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取短信任务状态</documentation>
+      <wsdl:input message="tns:Task_GetSmsStatusSoapIn" />
+      <wsdl:output message="tns:Task_GetSmsStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsStop">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">停止短信任务</documentation>
+      <wsdl:input message="tns:Task_SmsStopSoapIn" />
+      <wsdl:output message="tns:Task_SmsStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsStart">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">启动短信任务</documentation>
+      <wsdl:input message="tns:Task_SmsStartSoapIn" />
+      <wsdl:output message="tns:Task_SmsStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsSend">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">提交彩信任务</documentation>
+      <wsdl:input message="tns:Task_MmsSendSoapIn" />
+      <wsdl:output message="tns:Task_MmsSendSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_GetMmsStatus">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">取彩信任务状态</documentation>
+      <wsdl:input message="tns:Task_GetMmsStatusSoapIn" />
+      <wsdl:output message="tns:Task_GetMmsStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsStop">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">停止彩信任务</documentation>
+      <wsdl:input message="tns:Task_MmsStopSoapIn" />
+      <wsdl:output message="tns:Task_MmsStopSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsStart">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">启动彩信任务</documentation>
+      <wsdl:input message="tns:Task_MmsStartSoapIn" />
+      <wsdl:output message="tns:Task_MmsStartSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Agent_GetSmsBalance">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">代理商取短信余额</documentation>
+      <wsdl:input message="tns:Agent_GetSmsBalanceSoapIn" />
+      <wsdl:output message="tns:Agent_GetSmsBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Agent_GetCorpSmsBalance">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">代理商取其下企业的短信余额</documentation>
+      <wsdl:input message="tns:Agent_GetCorpSmsBalanceSoapIn" />
+      <wsdl:output message="tns:Agent_GetCorpSmsBalanceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Agent_CorpSmsPay">
+      <documentation xmlns="http://schemas.xmlsoap.org/wsdl/">代理商为其下企业充值短信</documentation>
+      <wsdl:input message="tns:Agent_CorpSmsPaySoapIn" />
+      <wsdl:output message="tns:Agent_CorpSmsPaySoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MobsetApiSoap" type="tns:MobsetApiSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Sms_Send">
+      <soap:operation soapAction="http://tempuri.org/Sms_Send" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetRecv">
+      <soap:operation soapAction="http://tempuri.org/Sms_GetRecv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetReport">
+      <soap:operation soapAction="http://tempuri.org/Sms_GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetSign">
+      <soap:operation soapAction="http://tempuri.org/Sms_GetSign" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Sms_GetBalance">
+      <soap:operation soapAction="http://tempuri.org/Sms_GetBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mms_UpFile">
+      <soap:operation soapAction="http://tempuri.org/Mms_UpFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetFileStatus">
+      <soap:operation soapAction="http://tempuri.org/Mms_GetFileStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mms_Send">
+      <soap:operation soapAction="http://tempuri.org/Mms_Send" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetReport">
+      <soap:operation soapAction="http://tempuri.org/Mms_GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Mms_GetRecv">
+      <soap:operation soapAction="http://tempuri.org/Mms_GetRecv" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_UpFile">
+      <soap:operation soapAction="http://tempuri.org/Task_UpFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_DelFile">
+      <soap:operation soapAction="http://tempuri.org/Task_DelFile" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsSend">
+      <soap:operation soapAction="http://tempuri.org/Task_SmsSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_GetSmsStatus">
+      <soap:operation soapAction="http://tempuri.org/Task_GetSmsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsStop">
+      <soap:operation soapAction="http://tempuri.org/Task_SmsStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_SmsStart">
+      <soap:operation soapAction="http://tempuri.org/Task_SmsStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsSend">
+      <soap:operation soapAction="http://tempuri.org/Task_MmsSend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_GetMmsStatus">
+      <soap:operation soapAction="http://tempuri.org/Task_GetMmsStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsStop">
+      <soap:operation soapAction="http://tempuri.org/Task_MmsStop" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Task_MmsStart">
+      <soap:operation soapAction="http://tempuri.org/Task_MmsStart" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agent_GetSmsBalance">
+      <soap:operation soapAction="http://tempuri.org/Agent_GetSmsBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agent_GetCorpSmsBalance">
+      <soap:operation soapAction="http://tempuri.org/Agent_GetCorpSmsBalance" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Agent_CorpSmsPay">
+      <soap:operation soapAction="http://tempuri.org/Agent_CorpSmsPay" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MobsetApi">
+    <wsdl:port name="MobsetApiSoap" binding="tns:MobsetApiSoap">
+      <soap:address location="http://sms3.mobset.com:8080/Api" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

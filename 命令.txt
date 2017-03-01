@@ -1,0 +1,13 @@
+1 Enable-Migrations -EnableAutomaticMigrations  启动配置
+
+2  Add-Migration 名称 获取更新
+3  Update-Database  更新到数据库
+
+4   Add-Migration Inheritance 自写代码
+
+
+交易日设置规则   设置的时间 必须小于当前日期,否则系统会自动过滤小于当前的日期,不会设置生效,交易日表记录的是非交易日的日期
+
+
+有效改为生效
+交易日有重复 
